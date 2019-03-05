@@ -13,9 +13,10 @@ function newDefaultQuestion()
 	i++;
 	content = document.createElement('div');
 	content.className = "defaultQuestion";
-	content.innerHTML = '<h3>Question '+i+'</h3>'+'<label>Question<input type="text" id="query" name="question_'+i+'" /></label><br /><label>Type<select id="type_'+i+defaultQuestionContent+i+')" value="Add Sub-Input"><input type="button" class="subButton" onclick="deleteQuestion('+i+')" value="Delete"></div>';
+	content.innerHTML = '<h3>Question '+i+'</h3>'+'<label>Question<input type="text" id="query" name="question_'+i+'" autocomplete="false"/></label><br /><label>Type<select id="type_'+i+defaultQuestionContent+i+')" value="Add Sub-Input"><input type="button" id="del_'+i+'" class="subButton" onclick="deleteQuestion('+i+')" value="Delete"></div>';
 	id="question_"+i;
 	content.setAttribute("id", id);
+	content.setAttribute("parent", "NULL");
 	content.style.marginLeft='25px';
 	id=document.getElementById('forms');
 	id.appendChild(content);
@@ -26,11 +27,14 @@ function newSubQuestion(j)
 	i++;
 	content = document.createElement('div');
 	content.className = "subQuestion";
-	content.innerHTML = '<h3>Question '+i+'</h3><label>Condition <select class="subtype" name="condition"><option value="equals" selected id="conditionA_'+i+'" label="Equals">Equals</option><option value="greater" id="conditionB_'+i+'" label="Greater than">Greater than</option><option value="less" id="conditionC_'+i+'" label="Less than">Less than</option></select></label><span id="spanId_'+i+'"> warunek </span><br /><label>Question <input type="text" id="query_'+i+'" name="question" /></label><br /><label>Type <select id="type_'+i+subQuestionContent+i+')" value="Add Sub-Input"><input type="button" class="subButton" onclick="deleteQuestion('+i+')" value="Delete"></div>';
+	content.innerHTML = '<h3>Question '+i+'</h3><label>Condition <select class="subtype" name="condition"><option value="equals" selected id="conditionA_'+i+'" label="Equals">Equals</option><option value="greater" id="conditionB_'+i+'" label="Greater than">Greater than</option><option value="less" id="conditionC_'+i+'" label="Less than">Less than</option></select></label><span id="spanId_'+i+'"> warunek </span><br /><label>Question <input type="text" id="query_'+i+'" name="question" autocomplete="false"/></label><br /><label>Type <select id="type_'+i+subQuestionContent+i+')" value="Add Sub-Input"><input type="button" id="del_'+i+'" class="subButton" onclick="deleteQuestion('+i+')" value="Delete"></div>';
 	id="question_"+i;
 	
 	content.setAttribute("id", id);
 	id=document.getElementById('question_'+j);
+	
+	content.setAttribute("parent", "question_"+j);
+	
 	styl=parseInt(id.style.marginLeft, 10);
 	styl +=50;
 	styl=styl+'px'
@@ -64,11 +68,10 @@ function newSubQuestion(j)
 }	
 	
 
-function deleteQuestion(i)
+function deleteQuestion(j)
 {
-	content = document.getElementById('question_'+i);
+	content = document.getElementById('question_'+j);
 	
-/*	if (content.hasChildNodes()==true)
-		content.removeChild(content.childNodes[0]);
-	*/content.remove();
+	content.remove();
+	
 }
