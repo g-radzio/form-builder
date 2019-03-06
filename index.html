@@ -12,17 +12,26 @@
 		<link rel="stylesheet" href="style.css" type="text/css" />
 	
 		<script src="script.js"></script>		
+		
 				
 	</head>
-	<body>
+	<body onload="start()">
 	<h1> Form Builder </h1>
 	<div id='forms'>
-		
-		
-
+	
 	</div>
 		<input type="button" id="addInput" onclick="newDefaultQuestion()" value="Add Input">
 	
-
+	<!-- 
+	odczyt danych z IndexedDB
+	<hr>
+	<div id="container">
+        <input type="button" id="printButton" value="Sprawdź zawartość IndexedDB" />
+        <br />
+        <output id="printOutput">
+        </output>
+    </div>
+	-->
+	
 	</body>
 </html>

@@ -3,6 +3,12 @@ h1
 	margin-left: 15px;
 }
 
+.etykieta
+{
+	min-width:100px;
+	text-decoration:underline;
+}
+
 .defaultQuestion
 {
 	border: 2px solid #B0B0B0;
